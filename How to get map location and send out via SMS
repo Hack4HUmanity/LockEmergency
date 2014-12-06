@@ -19,8 +19,9 @@ LocationListener locationListener = new LocationListener() {
   };
   //To request location updates from the GPS provider, substitute GPS_PROVIDER for NETWORK_PROVIDER. 
   You can also request location updates from both the GPS and the Network Location Provider by calling requestLocationUpdates() twice—once for NETWORK_PROVIDER and once for GPS_PROVIDER.
-  
-  //And this is how to request the user to allow user permisison. In order to receive location updates from NETWORK_PROVIDER or GPS_PROVIDER, you must request user permission by declaring either the ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission, respectively, in your Android manifest file. For example:
+  The first parameter in requestLocationUpdates() is the type of location provider to use (in this case, the Network Location Provider for cell tower and Wi-Fi based location). You can control the frequency at which your listener receives updates with the second and third parameter—the second is the minimum time interval between notifications and the third is the minimum change in distance between notifications—setting both to zero requests location notifications as frequently as possible. The last parameter is your LocationListener, which receives callbacks for location updates.
+  //And this is how to request the user to allow user permisison. In order to receive location updates from NETWORK_PROVIDER or GPS_PROVIDER, 
+  you must request user permission by declaring either the ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission, respectively, in your Android manifest file. For example:
 
 <manifest ... >
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
