@@ -1,0 +1,28 @@
+void	sendTextMessage(String destinationAddress, String scAddress, String text, PendingIntent sentIntent, PendingIntent deliveryIntent)
+//and this is the callback feature to get the GPS location 
+// Acquire a reference to the system Location Manager
+LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+// Define a listener that responds to location updates
+LocationListener locationListener = new LocationListener() {
+    public void onLocationChanged(Location location) {
+      // Called when a new location is found by the network location provider.
+      makeUseOfNewLocation(location);
+    }
+
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+    public void onProviderEnabled(String provider) {}
+    
+
+    public void onProviderDisabled(String provider) {}
+  };
+  //To request location updates from the GPS provider, substitute GPS_PROVIDER for NETWORK_PROVIDER. 
+  You can also request location updates from both the GPS and the Network Location Provider by calling requestLocationUpdates() twice—once for NETWORK_PROVIDER and once for GPS_PROVIDER.
+  
+  //And this is how to request the user to allow user permisison. In order to receive location updates from NETWORK_PROVIDER or GPS_PROVIDER, you must request user permission by declaring either the ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission, respectively, in your Android manifest file. For example:
+
+<manifest ... >
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    ...
+</manifest>
